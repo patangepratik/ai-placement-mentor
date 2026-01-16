@@ -12,8 +12,6 @@ import {
     Paper
 } from '@mui/material';
 import {
-    Settings as SettingsIcon,
-    Email as EmailIcon,
     Badge as BadgeIcon,
     Security as SecurityIcon,
     CloudDone as CloudIcon

@@ -19,20 +19,31 @@ import {
 } from '@mui/icons-material';
 import codingData from '../data/coding.json';
 
+import { useUserActivity } from '../hooks/useUserActivity';
+
 export default function Programming() {
+    const { trackActivity } = useUserActivity();
     const [currentIdx, setCurrentIdx] = useState(0);
+    const [isSolved, setIsSolved] = useState(false);
     const problem = codingData[currentIdx];
 
     const handleNext = () => {
         if (currentIdx < codingData.length - 1) {
             setCurrentIdx(prev => prev + 1);
+            setIsSolved(false);
         }
     };
 
     const handlePrev = () => {
         if (currentIdx > 0) {
             setCurrentIdx(prev => prev - 1);
+            setIsSolved(false);
         }
+    };
+
+    const handleSolve = () => {
+        setIsSolved(true);
+        trackActivity('programming_solve', { title: problem.title });
     };
 
     const getDifficultyColor = (diff) => {
@@ -80,6 +91,14 @@ export default function Programming() {
                                     size="small"
                                     sx={{ borderRadius: 1.5 }}
                                 />
+                                {isSolved && (
+                                    <Chip
+                                        label="Solved"
+                                        color="success"
+                                        size="small"
+                                        sx={{ fontWeight: 700, borderRadius: 1.5 }}
+                                    />
+                                )}
                             </Box>
 
                             <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
@@ -129,15 +148,27 @@ export default function Programming() {
                                 </Box>
                             )}
 
-                            <Button
-                                variant="contained"
-                                fullWidth
-                                startIcon={<CodeIcon />}
-                                sx={{ mt: 4, py: 1.5 }}
-                                onClick={() => window.open('https://leetcode.com', '_blank')}
-                            >
-                                Solve on Playground
-                            </Button>
+                            <Box sx={{ display: 'flex', gap: 2, mt: 4 }}>
+                                <Button
+                                    variant="contained"
+                                    color="success"
+                                    fullWidth
+                                    onClick={handleSolve}
+                                    disabled={isSolved}
+                                    sx={{ py: 1.5, borderRadius: 2 }}
+                                >
+                                    {isSolved ? "Solved" : "Mark as Solved"}
+                                </Button>
+                                <Button
+                                    variant="outlined"
+                                    fullWidth
+                                    startIcon={<CodeIcon />}
+                                    sx={{ py: 1.5, borderRadius: 2 }}
+                                    onClick={() => window.open('https://leetcode.com', '_blank')}
+                                >
+                                    Playground
+                                </Button>
+                            </Box>
                         </CardContent>
                     </Card>
                 </Grid>

@@ -19,7 +19,8 @@ import {
     Star as StarIcon,
     PlayArrow as PlayIcon,
     ArrowForward as ArrowIcon,
-    QuestionAnswer as InterviewIcon
+    QuestionAnswer as InterviewIcon,
+    Code as CodeIcon
 } from '@mui/icons-material';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -49,11 +50,17 @@ export default function Dashboard() {
     const [progress, setProgress] = useState({ questionsSolved: 0, mockInterviews: 0, timeSpent: 0, recentActivity: [] });
 
     useEffect(() => {
-        if (currentUser) {
-            const data = userProgress || getUserProgress(currentUser.uid);
-            setProgress(data);
+        if (currentUser && !userProgress) {
+            getUserProgress(currentUser.uid);
         }
     }, [currentUser, getUserProgress, userProgress]);
+
+    // Update local progress when userProgress state changes
+    useEffect(() => {
+        if (userProgress) {
+            setProgress(userProgress);
+        }
+    }, [userProgress]);
 
     const stats = [
         { title: 'Questions Solved', value: progress.questionsSolved, icon: <AssignmentIcon />, color: 'primary', trend: '+12%' },
@@ -120,14 +127,18 @@ export default function Dashboard() {
                                     <React.Fragment key={activity.id}>
                                         <Box sx={{ display: 'flex', alignItems: 'center', p: 2, '&:hover': { bgcolor: 'action.hover' }, borderRadius: 3, transition: '0.2s' }}>
                                             <Avatar sx={{ bgcolor: 'primary.light', color: 'primary.main', mr: 2 }}>
-                                                {activity.type === 'aptitude_solve' ? <AssignmentIcon /> : <InterviewIcon />}
+                                                {activity.type === 'aptitude_solve' ? <AssignmentIcon /> :
+                                                    activity.type === 'programming_solve' ? <CodeIcon /> :
+                                                        <InterviewIcon />}
                                             </Avatar>
                                             <Box sx={{ flexGrow: 1 }}>
                                                 <Typography variant="body1" fontWeight={700}>
-                                                    {activity.type === 'aptitude_solve' ? 'Solved Aptitude Question' : 'Viewed Interview Guide'}
+                                                    {activity.type === 'aptitude_solve' ? 'Solved Aptitude Question' :
+                                                        activity.type === 'programming_solve' ? 'Completed Code Challenge' :
+                                                            'Viewed Interview Guide'}
                                                 </Typography>
                                                 <Typography variant="caption" color="text.secondary">
-                                                    {new Date(activity.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} • {activity.details?.question || 'Technical Prep'}
+                                                    {new Date(activity.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} • {activity.details?.question || activity.details?.title || 'Technical Prep'}
                                                 </Typography>
                                             </Box>
                                             <Chip label="Success" size="small" color="success" variant="outlined" sx={{ fontWeight: 700 }} />

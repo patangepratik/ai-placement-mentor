@@ -1,12 +1,14 @@
 import { useAuth } from '../contexts/AuthContext';
 
 export const useUserActivity = () => {
-    const { currentUser, getUserProgress, updateUserProgress } = useAuth();
+    const { currentUser, getUserProgress, updateUserProgress, userProgress } = useAuth();
 
-    const trackActivity = (type, details) => {
+    const trackActivity = async (type, details) => {
         if (!currentUser) return;
 
-        const currentProgress = getUserProgress(currentUser.uid);
+        // Use cached state or fetch fresh
+        const currentProgress = userProgress || await getUserProgress(currentUser.uid);
+
         const newActivity = {
             type,
             details,
@@ -18,12 +20,13 @@ export const useUserActivity = () => {
 
         // Update counts based on activity
         if (type === 'aptitude_solve') updatedData.questionsSolved += 1;
-        if (type === 'interview_view') updatedData.mockInterviews += 0.5; // Weightage
+        if (type === 'programming_solve') updatedData.questionsSolved += 2; // Programming worth more
+        if (type === 'interview_view') updatedData.mockInterviews += 0.5;
 
         // Add to recent activity list (keep last 10)
         updatedData.recentActivity = [newActivity, ...(currentProgress.recentActivity || [])].slice(0, 10);
 
-        updateUserProgress(currentUser.uid, updatedData);
+        await updateUserProgress(currentUser.uid, updatedData);
     };
 
     return { trackActivity };

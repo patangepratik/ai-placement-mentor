@@ -62,7 +62,7 @@ export function AuthProvider({ children }) {
       try {
         const user = JSON.parse(stored);
         setCurrentUser(user);
-        setUserProgress(getUserProgress(user.uid));
+        getUserProgress(user.uid); // This will update userProgress state inside
       } catch (e) {
         console.error("Auth init error:", e);
         localStorage.removeItem("current-user");
@@ -73,27 +73,54 @@ export function AuthProvider({ children }) {
 
   const [userProgress, setUserProgress] = useState(null);
 
-  function getUserProgress(userId) {
+  async function getUserProgress(userId) {
     if (!userId) return null;
+
+    // First check local for quick responsive feel
     const progressKey = `user-progress-${userId}`;
     const stored = localStorage.getItem(progressKey);
-    const data = stored ? JSON.parse(stored) : {
+    let initialData = stored ? JSON.parse(stored) : {
       questionsSolved: 0,
       mockInterviews: 0,
       timeSpent: 0,
       recentActivity: []
     };
-    return data;
+
+    try {
+      const response = await fetch(`http://localhost:5000/api/progress/${userId}`);
+      if (response.ok) {
+        const remoteData = await response.json();
+        localStorage.setItem(progressKey, JSON.stringify(remoteData));
+        setUserProgress(remoteData);
+        return remoteData;
+      }
+    } catch (e) {
+      console.warn("Backend progress fetch failed, using local fallback");
+    }
+
+    setUserProgress(initialData);
+    return initialData;
   }
 
-  function updateUserProgress(userId, progressData) {
+  async function updateUserProgress(userId, progressData) {
     if (!userId) return;
     const progressKey = `user-progress-${userId}`;
-    const current = getUserProgress(userId);
-    const updated = { ...current, ...progressData };
-    localStorage.setItem(progressKey, JSON.stringify(updated));
-    setUserProgress(updated);
-    return updated;
+
+    // Optimistic update
+    localStorage.setItem(progressKey, JSON.stringify(progressData));
+    setUserProgress(progressData);
+
+    try {
+      await fetch(`http://localhost:5000/api/progress/${userId}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(progressData),
+      });
+    } catch (e) {
+      console.error("Failed to sync progress to backend:", e);
+    }
+
+    return progressData;
   }
 
   function resetPassword(email) {

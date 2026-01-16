@@ -14,12 +14,15 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # --- CONFIGURATION ---
-# The user provided a fallback key in the request
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AIzaSyBORjxRqbiE1byX5hOyFAUXoSZvnBh7z8w")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 USERS_FILE = 'users.json'
 
 try:
-    # Initializing with standard settings, will use detected model names
+    # DEBUG: Print first 4 chars of key to verify which is being used
+    key_peek = GEMINI_API_KEY[:4] if GEMINI_API_KEY else "None"
+    print(f"Initializing Gemini with key: {key_peek}...")
+    
+    # Initializing with standard settings
     client = genai.Client(api_key=GEMINI_API_KEY)
     print("Gemini Client initialized successfully")
 except Exception as e:
@@ -92,17 +95,52 @@ def login():
     data = request.json
     email = data.get('email')
     password = data.get('password')
+    
+    print(f"Login Attempt: {email}")
 
     users = load_users()
-    user = next((u for u in users if u['email'] == email and u['password'] == password), None)
+    print(f"Loaded {len(users)} users from {USERS_FILE}")
+    
+    user = next((u for u in users if u['email'].lower() == email.lower() and u['password'] == str(password)), None)
 
     if user:
+        print(f"Login SUCCESS for {email}")
         return jsonify({
             "message": "Login successful",
             "user": {"email": user['email'], "uid": user['uid']}
         }), 200
     else:
+        print(f"Login FAILED for {email}")
         return jsonify({"error": "Invalid email or password"}), 401
+
+# --- PROGRESS API ---
+@app.route('/api/progress/<uid>', methods=['GET'])
+def get_progress(uid):
+    users = load_users()
+    user = next((u for u in users if u['uid'] == uid), None)
+    
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+    
+    return jsonify(user.get('progress', {
+        "questionsSolved": 0,
+        "mockInterviews": 0,
+        "timeSpent": 0,
+        "recentActivity": []
+    }))
+
+@app.route('/api/progress/<uid>', methods=['POST'])
+def update_progress(uid):
+    data = request.json
+    users = load_users()
+    
+    for user in users:
+        if user['uid'] == uid:
+            user['progress'] = data
+            save_users(users)
+            return jsonify({"message": "Progress updated", "progress": data}), 200
+            
+    return jsonify({"error": "User not found"}), 404
 
 @app.route('/api/resume-analyze', methods=['POST'])
 @app.route('/analyze-resume', methods=['POST'])

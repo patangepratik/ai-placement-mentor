@@ -107,9 +107,16 @@ export default function Login() {
                                 fullWidth
                                 variant="outlined"
                                 onClick={async () => {
-                                    setLoading(true);
-                                    await login('test@test.com', 'password');
-                                    navigate('/dashboard');
+                                    try {
+                                        setLoading(true);
+                                        setError('');
+                                        await login('test@test.com', 'password');
+                                        navigate('/dashboard');
+                                    } catch (err) {
+                                        setError("Guest account not found. Try signing up!");
+                                    } finally {
+                                        setLoading(false);
+                                    }
                                 }}
                                 disabled={loading}
                                 sx={{ mt: 1.5, py: 1.2, borderRadius: 3, fontWeight: 700, borderColor: '#e0e0e0', color: 'text.secondary' }}
