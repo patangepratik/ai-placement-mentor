@@ -1,0 +1,137 @@
+[
+    {
+        "id": 1,
+        "type": "HR",
+        "question": "Tell me about yourself.",
+        "answer": "Start with your name, give a place information, education in short, job experience if any, and family details in short. Highlight your achievements and skills relevant to the job.",
+        "tips": "Keep it professional, relevant to the job, and concise (under 2 minutes)."
+    },
+    {
+        "id": 2,
+        "type": "HR",
+        "question": "Why should we hire you?",
+        "answer": "Share your track record of achievement. Highlight your unique skills that solve their specific problems. Show you are a cultural fit.",
+        "tips": "Connect your skills to the company's needs."
+    },
+    {
+        "id": 3,
+        "type": "Technical",
+        "topic": "dbms",
+        "question": "What is Normalization?",
+        "answer": "Normalization is the process of organizing data in a database. It includes creating tables and establishing relationships between those tables according to rules designed both to protect the data and to make the database more flexible by eliminating redundancy and inconsistent dependency.",
+        "tips": "Mention 1NF, 2NF, 3NF, and BCNF."
+    },
+    {
+        "id": 4,
+        "type": "Technical",
+        "topic": "oops",
+        "question": "What are the four pillars of OOP?",
+        "answer": "Abstraction, Encapsulation, Inheritance, and Polymorphism.",
+        "tips": "Be ready to explain each with a real-world example."
+    },
+    {
+        "id": 5,
+        "type": "Behavioral",
+        "question": "Describe a time when you faced a challenge and how you overcame it.",
+        "answer": "Use the STAR method: Situation, Task, Action, Result. Describe the context, what you needed to do, what you actually did, and the positive outcome.",
+        "tips": "Focus on your specific contribution and positive results."
+    },
+    {
+        "id": 6,
+        "type": "HR",
+        "question": "What are your strengths and weaknesses?",
+        "answer": "For strengths, mention 2-3 skills relevant to the job with examples. For weaknesses, mention a real weakness you're actively working to improve, and explain how you're addressing it.",
+        "tips": "Be honest but strategic. Don't say 'I'm a perfectionist' as a weakness."
+    },
+    {
+        "id": 7,
+        "type": "HR",
+        "question": "Where do you see yourself in 5 years?",
+        "answer": "Express your desire to grow within the company, take on more responsibilities, and develop expertise in your field. Show ambition but also commitment to the organization.",
+        "tips": "Align your goals with the company's growth trajectory."
+    },
+    {
+        "id": 8,
+        "type": "Technical",
+        "topic": "javascript",
+        "question": "What is the difference between == and === in JavaScript?",
+        "answer": "== is the equality operator that performs type coercion if needed. === is the strict equality operator that checks both value and type without coercion.",
+        "tips": "Give examples: '5' == 5 is true, but '5' === 5 is false."
+    },
+    {
+        "id": 9,
+        "type": "Technical",
+        "topic": "react",
+        "question": "What are React Hooks?",
+        "answer": "Hooks are functions that let you use state and other React features in functional components. Common hooks include useState, useEffect, useContext, and useRef.",
+        "tips": "Explain useState and useEffect with examples."
+    },
+    {
+        "id": 10,
+        "type": "Technical",
+        "topic": "sql",
+        "question": "What is the difference between INNER JOIN and LEFT JOIN?",
+        "answer": "INNER JOIN returns only matching rows from both tables. LEFT JOIN returns all rows from the left table and matching rows from the right table (NULL for non-matches).",
+        "tips": "Draw a Venn diagram if asked to explain visually."
+    },
+    {
+        "id": 11,
+        "type": "Technical",
+        "topic": "dsa",
+        "question": "Explain the difference between Stack and Queue.",
+        "answer": "Stack follows LIFO (Last In First Out) - like a stack of plates. Queue follows FIFO (First In First Out) - like a line at a ticket counter.",
+        "tips": "Mention real-world use cases: Stack for undo/redo, Queue for task scheduling."
+    },
+    {
+        "id": 12,
+        "type": "Behavioral",
+        "question": "Tell me about a time you worked in a team.",
+        "answer": "Use STAR method. Describe a specific project, your role, how you collaborated, handled conflicts, and the successful outcome.",
+        "tips": "Emphasize communication, collaboration, and your specific contribution."
+    },
+    {
+        "id": 13,
+        "type": "HR",
+        "question": "Why do you want to work for our company?",
+        "answer": "Research the company beforehand. Mention specific aspects like their products, culture, values, or recent achievements that align with your career goals.",
+        "tips": "Show genuine interest and knowledge about the company."
+    },
+    {
+        "id": 14,
+        "type": "Technical",
+        "topic": "python",
+        "question": "What is the difference between list and tuple in Python?",
+        "answer": "Lists are mutable (can be changed) and use square brackets []. Tuples are immutable (cannot be changed) and use parentheses ().",
+        "tips": "Mention use cases: lists for dynamic data, tuples for fixed data like coordinates."
+    },
+    {
+        "id": 15,
+        "type": "Behavioral",
+        "question": "How do you handle stress and pressure?",
+        "answer": "Explain your strategies: prioritization, time management, breaking tasks into smaller parts, taking short breaks, or seeking help when needed. Give a specific example.",
+        "tips": "Show you're proactive and have healthy coping mechanisms."
+    },
+    {
+        "id": 16,
+        "type": "Technical",
+        "topic": "os",
+        "question": "What is the difference between Process and Thread?",
+        "answer": "A process is an independent program in execution with its own memory space. A thread is a lightweight unit of a process that shares the same memory space with other threads.",
+        "tips": "Mention that threads are faster to create and context-switch than processes."
+    },
+    {
+        "id": 17,
+        "type": "HR",
+        "question": "What is your expected salary?",
+        "answer": "Research industry standards for your role and experience. Provide a range rather than a fixed number. Express flexibility and willingness to negotiate based on the complete package.",
+        "tips": "Don't undersell yourself, but be realistic based on market rates."
+    },
+    {
+        "id": 18,
+        "type": "Technical",
+        "topic": "networking",
+        "question": "What is the difference between TCP and UDP?",
+        "answer": "TCP is connection-oriented, reliable, ensures data delivery in order, slower. UDP is connectionless, unreliable, faster, used for streaming and gaming.",
+        "tips": "Mention use cases: TCP for web browsing, UDP for video calls."
+    }
+]

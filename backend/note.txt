@@ -1,0 +1,7 @@
+import google.generativeai as genai
+genai.configure(api_key="AIzaSyBORjxRqbiE1byX5hOyFAUXoSZvnBh7z8w")
+model = genai.GenerativeModel('gemini-1.5-flash') # Default
+# I'll just use gemini-1.5-flash for now and see if I can fix the error.
+# Wait, I'll update app.py to use gemini-1.5-flash but maybe I should check if the key is actually valid.
+# The user said "api kery for it is of gemini is AIzaSyBORjxRqbiE1byX5hOyFAUXoSZvnBh7z8w"
+# Maybe it's a "Gemini API key" for the old API? No, the prefix AIza is standard.

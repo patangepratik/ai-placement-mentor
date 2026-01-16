@@ -1,0 +1,137 @@
+[
+    {
+        "id": 1,
+        "difficulty": "Easy",
+        "title": "Two Sum",
+        "problem": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+        "sampleInput": "nums = [2,7,11,15], target = 9",
+        "sampleOutput": "[0,1]",
+        "explanation": "Because nums[0] + nums[1] == 9, we return [0, 1]."
+    },
+    {
+        "id": 2,
+        "difficulty": "Easy",
+        "title": "Palindrome Number",
+        "problem": "Given an integer x, return true if x is palindrome integer.",
+        "sampleInput": "x = 121",
+        "sampleOutput": "true",
+        "explanation": "121 reads as 121 from left to right and from right to left."
+    },
+    {
+        "id": 3,
+        "difficulty": "Medium",
+        "title": "Longest Substring Without Repeating Characters",
+        "problem": "Given a string s, find the length of the longest substring without repeating characters.",
+        "sampleInput": "s = 'abcabcbb'",
+        "sampleOutput": "3",
+        "explanation": "The answer is 'abc', with the length of 3."
+    },
+    {
+        "id": 4,
+        "difficulty": "Medium",
+        "title": "Container With Most Water",
+        "problem": "You are given an integer array height of length n. Find two lines that together with the x-axis form a container, such that the container contains the most water.",
+        "sampleInput": "height = [1,8,6,2,5,4,8,3,7]",
+        "sampleOutput": "49",
+        "explanation": "The above vertical lines are represented by array [1,8,6,2,5,4,8,3,7]. In this case, the max area of water (blue section) the container can contain is 49."
+    },
+    {
+        "id": 5,
+        "difficulty": "Hard",
+        "title": "Median of Two Sorted Arrays",
+        "problem": "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.",
+        "sampleInput": "nums1 = [1,3], nums2 = [2]",
+        "sampleOutput": "2.00000",
+        "explanation": "merged array = [1,2,3] and median is 2."
+    },
+    {
+        "id": 6,
+        "difficulty": "Easy",
+        "title": "Reverse Integer",
+        "problem": "Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-2^31, 2^31 - 1], then return 0.",
+        "sampleInput": "x = 123",
+        "sampleOutput": "321",
+        "explanation": "Simply reverse the digits of 123 to get 321."
+    },
+    {
+        "id": 7,
+        "difficulty": "Easy",
+        "title": "Valid Parentheses",
+        "problem": "Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. An input string is valid if: Open brackets must be closed by the same type of brackets and in the correct order.",
+        "sampleInput": "s = '()'",
+        "sampleOutput": "true",
+        "explanation": "The string contains valid matching parentheses."
+    },
+    {
+        "id": 8,
+        "difficulty": "Easy",
+        "title": "Merge Two Sorted Lists",
+        "problem": "You are given the heads of two sorted linked lists list1 and list2. Merge the two lists into one sorted list.",
+        "sampleInput": "list1 = [1,2,4], list2 = [1,3,4]",
+        "sampleOutput": "[1,1,2,3,4,4]",
+        "explanation": "Merge both lists by comparing values and linking nodes in sorted order."
+    },
+    {
+        "id": 9,
+        "difficulty": "Medium",
+        "title": "3Sum",
+        "problem": "Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.",
+        "sampleInput": "nums = [-1,0,1,2,-1,-4]",
+        "sampleOutput": "[[-1,-1,2],[-1,0,1]]",
+        "explanation": "The distinct triplets are [-1,0,1] and [-1,-1,2]."
+    },
+    {
+        "id": 10,
+        "difficulty": "Medium",
+        "title": "Binary Tree Level Order Traversal",
+        "problem": "Given the root of a binary tree, return the level order traversal of its nodes' values (i.e., from left to right, level by level).",
+        "sampleInput": "root = [3,9,20,null,null,15,7]",
+        "sampleOutput": "[[3],[9,20],[15,7]]",
+        "explanation": "Level 0: [3], Level 1: [9,20], Level 2: [15,7]."
+    },
+    {
+        "id": 11,
+        "difficulty": "Easy",
+        "title": "Maximum Subarray",
+        "problem": "Given an integer array nums, find the subarray with the largest sum, and return its sum.",
+        "sampleInput": "nums = [-2,1,-3,4,-1,2,1,-5,4]",
+        "sampleOutput": "6",
+        "explanation": "The subarray [4,-1,2,1] has the largest sum 6."
+    },
+    {
+        "id": 12,
+        "difficulty": "Medium",
+        "title": "Rotate Array",
+        "problem": "Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.",
+        "sampleInput": "nums = [1,2,3,4,5,6,7], k = 3",
+        "sampleOutput": "[5,6,7,1,2,3,4]",
+        "explanation": "Rotate 1 step: [7,1,2,3,4,5,6], 2 steps: [6,7,1,2,3,4,5], 3 steps: [5,6,7,1,2,3,4]."
+    },
+    {
+        "id": 13,
+        "difficulty": "Hard",
+        "title": "Trapping Rain Water",
+        "problem": "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.",
+        "sampleInput": "height = [0,1,0,2,1,0,1,3,2,1,2,1]",
+        "sampleOutput": "6",
+        "explanation": "The elevation map traps 6 units of rain water."
+    },
+    {
+        "id": 14,
+        "difficulty": "Medium",
+        "title": "Longest Palindromic Substring",
+        "problem": "Given a string s, return the longest palindromic substring in s.",
+        "sampleInput": "s = 'babad'",
+        "sampleOutput": "'bab' or 'aba'",
+        "explanation": "Both 'bab' and 'aba' are valid palindromic substrings."
+    },
+    {
+        "id": 15,
+        "difficulty": "Easy",
+        "title": "Climbing Stairs",
+        "problem": "You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?",
+        "sampleInput": "n = 3",
+        "sampleOutput": "3",
+        "explanation": "There are three ways: 1+1+1, 1+2, 2+1."
+    }
+]

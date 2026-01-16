@@ -1,0 +1,197 @@
+[
+    {
+        "id": 1,
+        "category": "Quantitative",
+        "question": "A train running at the speed of 60 km/hr crosses a pole in 9 seconds. What is the length of the train?",
+        "options": [
+            "120 meters",
+            "180 meters",
+            "324 meters",
+            "150 meters"
+        ],
+        "correctAnswer": "150 meters",
+        "explanation": "Speed = 60 km/hr = 60 * (5/18) m/sec = 50/3 m/sec. Length of the train = (Speed * Time) = (50/3) * 9 = 150 meters."
+    },
+    {
+        "id": 2,
+        "category": "Quantitative",
+        "question": "The average of 20 numbers is zero. Of them, at the most, how many may be greater than zero?",
+        "options": [
+            "0",
+            "1",
+            "10",
+            "19"
+        ],
+        "correctAnswer": "19",
+        "explanation": "Average of 20 numbers = 0. Sum = 0. It is possible that 19 numbers are positive and their sum is equal to the negative of the 20th number."
+    },
+    {
+        "id": 3,
+        "category": "Logical Reasoning",
+        "question": "Look at this series: 2, 1, (1/2), (1/4), ... What number should come next?",
+        "options": [
+            "(1/3)",
+            "(1/8)",
+            "(2/8)",
+            "(1/16)"
+        ],
+        "correctAnswer": "(1/8)",
+        "explanation": "This is a geometric series where each number is one-half of the previous number."
+    },
+    {
+        "id": 4,
+        "category": "Logical Reasoning",
+        "question": "SCD, TEF, UGH, ____, WKL",
+        "options": [
+            "CMN",
+            "UJI",
+            "VIJ",
+            "IJT"
+        ],
+        "correctAnswer": "VIJ",
+        "explanation": "There are two series here. The first letters are in alphabetical order: S, T, U, V, W. The second and third letters are repeated: CD, EF, GH, IJ, KL."
+    },
+    {
+        "id": 5,
+        "category": "Verbal Ability",
+        "question": "Choose the word which is the exact OPPOSITE of the given word: ARTIFICIAL",
+        "options": [
+            "Red",
+            "Natural",
+            "Truthful",
+            "Solid"
+        ],
+        "correctAnswer": "Natural",
+        "explanation": "Artificial means made by human skill; produced by humans. Natural means existing in or caused by nature; not made or caused by humankind."
+    },
+    {
+        "id": 6,
+        "category": "Quantitative",
+        "question": "If 20% of a number is 50, what is 60% of that number?",
+        "options": [
+            "100",
+            "150",
+            "200",
+            "250"
+        ],
+        "correctAnswer": "150",
+        "explanation": "Let the number be x. 20% of x = 50, so x = 250. Therefore, 60% of 250 = 150."
+    },
+    {
+        "id": 7,
+        "category": "Quantitative",
+        "question": "A shopkeeper marks his goods 30% above cost price but allows a discount of 10%. What is his net profit percentage?",
+        "options": [
+            "17%",
+            "20%",
+            "27%",
+            "15%"
+        ],
+        "correctAnswer": "17%",
+        "explanation": "Let CP = 100. Marked Price = 130. Selling Price after 10% discount = 130 - 13 = 117. Profit = 17%."
+    },
+    {
+        "id": 8,
+        "category": "Quantitative",
+        "question": "The ratio of ages of A and B is 3:5. After 6 years, the ratio will be 2:3. What is the present age of A?",
+        "options": [
+            "18 years",
+            "24 years",
+            "30 years",
+            "36 years"
+        ],
+        "correctAnswer": "18 years",
+        "explanation": "Let ages be 3x and 5x. After 6 years: (3x+6)/(5x+6) = 2/3. Solving: 9x + 18 = 10x + 12, x = 6. A's age = 3×6 = 18 years."
+    },
+    {
+        "id": 9,
+        "category": "Logical Reasoning",
+        "question": "If DELHI is coded as 73541 and CALCUTTA as 82589662, how is CALICUT coded?",
+        "options": [
+            "5279431",
+            "5978213",
+            "8251896",
+            "8543691"
+        ],
+        "correctAnswer": "8251896",
+        "explanation": "C=8, A=2, L=5, I=1, C=8, U=9, T=6. Therefore CALICUT = 8251896."
+    },
+    {
+        "id": 10,
+        "category": "Logical Reasoning",
+        "question": "In a certain code, MONKEY is written as XDJMNL. How is TIGER written in that code?",
+        "options": [
+            "SHFDQ",
+            "UJHFS",
+            "SDFHS",
+            "QDFHS"
+        ],
+        "correctAnswer": "SHFDQ",
+        "explanation": "Each letter is replaced by the letter preceding it in the alphabet. T→S, I→H, G→F, E→D, R→Q."
+    },
+    {
+        "id": 11,
+        "category": "Verbal Ability",
+        "question": "Choose the correct synonym for ABUNDANT:",
+        "options": [
+            "Scarce",
+            "Plentiful",
+            "Rare",
+            "Limited"
+        ],
+        "correctAnswer": "Plentiful",
+        "explanation": "Abundant means existing or available in large quantities; plentiful."
+    },
+    {
+        "id": 12,
+        "category": "Verbal Ability",
+        "question": "Fill in the blank: He was _____ by the sudden noise.",
+        "options": [
+            "startled",
+            "started",
+            "starting",
+            "starts"
+        ],
+        "correctAnswer": "startled",
+        "explanation": "Startled (past participle) is the correct form meaning surprised or frightened suddenly."
+    },
+    {
+        "id": 13,
+        "category": "Data Interpretation",
+        "question": "If a pie chart shows 25% for Category A, 35% for Category B, and the rest for Category C, what percentage is Category C?",
+        "options": [
+            "30%",
+            "35%",
+            "40%",
+            "45%"
+        ],
+        "correctAnswer": "40%",
+        "explanation": "Total = 100%. Category C = 100 - 25 - 35 = 40%."
+    },
+    {
+        "id": 14,
+        "category": "Data Interpretation",
+        "question": "The average score of 5 students is 80. If one student scored 95, what is the average of the remaining 4 students?",
+        "options": [
+            "75.25",
+            "76.25",
+            "77.25",
+            "78.75"
+        ],
+        "correctAnswer": "76.25",
+        "explanation": "Total of 5 students = 80×5 = 400. Remaining 4 students total = 400-95 = 305. Average = 305/4 = 76.25."
+    },
+    {
+        "id": 15,
+        "category": "Quantitative",
+        "question": "A sum of money doubles itself in 8 years at simple interest. What is the rate of interest per annum?",
+        "options": [
+            "10%",
+            "12.5%",
+            "15%",
+            "20%"
+        ],
+        "correctAnswer": "12.5%",
+        "explanation": "If principal = P, then SI = P (doubles). SI = (P×R×8)/100 = P. Therefore R = 12.5%."
+    }
+]
