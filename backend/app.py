@@ -10,8 +10,23 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-# Enable CORS for the frontendport 3000
-CORS(app, resources={r"/*": {"origins": "*"}})
+
+# --- CORS CONFIGURATION ---
+ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://ai-placement-mentor.netlify.app",
+    "https://ai-placement-mentor.vercel.app" # Adding Vercel as well for good measure
+]
+
+CORS(app, resources={
+    r"/*": {
+        "origins": "*",
+        "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        "allow_headers": ["Content-Type", "Authorization"]
+    }
+})
+
+
 
 # --- CONFIGURATION ---
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
@@ -314,7 +329,9 @@ def chat():
 
 @app.route('/health', methods=['GET'])
 def health():
-    return jsonify({"status": "healthy", "model": "gemini-flash-latest"})
+    return jsonify({"status": "ok"})
+
+
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))

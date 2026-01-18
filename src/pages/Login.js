@@ -20,7 +20,8 @@ export default function Login() {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
-    const { login, resetPassword } = useAuth();
+    const { login, resetPassword, continueAsGuest } = useAuth();
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -106,23 +107,27 @@ export default function Login() {
                             <Button
                                 fullWidth
                                 variant="outlined"
-                                onClick={async () => {
-                                    try {
-                                        setLoading(true);
-                                        setError('');
-                                        await login('test@test.com', 'password');
-                                        navigate('/dashboard');
-                                    } catch (err) {
-                                        setError("Guest account not found. Try signing up!");
-                                    } finally {
-                                        setLoading(false);
-                                    }
+                                onClick={() => {
+                                    continueAsGuest();
+                                    navigate('/dashboard');
                                 }}
                                 disabled={loading}
-                                sx={{ mt: 1.5, py: 1.2, borderRadius: 3, fontWeight: 700, borderColor: '#e0e0e0', color: 'text.secondary' }}
+                                sx={{
+                                    mt: 1.5,
+                                    py: 1.2,
+                                    borderRadius: 3,
+                                    fontWeight: 700,
+                                    borderColor: '#e0e0e0',
+                                    color: 'text.secondary',
+                                    '&:hover': {
+                                        borderColor: 'primary.main',
+                                        bgcolor: 'rgba(25, 118, 210, 0.04)'
+                                    }
+                                }}
                             >
-                                Login as Guest
+                                Continue as Guest
                             </Button>
+
                         </form>
 
                         <Box sx={{ mt: 3, textAlign: 'center' }}>

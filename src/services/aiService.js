@@ -1,6 +1,8 @@
 import axios from 'axios';
+import API_BASE_URL from '../apiBase';
 
-const BACKEND_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const BACKEND_URL = API_BASE_URL;
+
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 1000;
 
@@ -76,7 +78,8 @@ class AIService {
                 // Server responded with an error (e.g. 500 AI Engine failure)
                 throw new Error(`AI Engine Error: ${error.response.data.error || "Processing failed"}. Please try again later.`);
             }
-            throw new Error("Cannot connect to AI Server. Please ensure 'python backend/app.py' is running and visible at http://localhost:5000.");
+            throw new Error(`Cannot connect to AI Server. Please ensure the backend is running at ${BACKEND_URL}`);
+
         }
     }
 

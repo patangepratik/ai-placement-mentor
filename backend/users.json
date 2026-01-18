@@ -1,0 +1,35 @@
+[
+    {
+        "email": "abcd@gmail.com",
+        "password": "252005",
+        "uid": "user-1-caeb38e1",
+        "progress": {
+            "mockInterviews": 0,
+            "questionsSolved": 2,
+            "recentActivity": [
+                {
+                    "type": "aptitude_solve",
+                    "details": {
+                        "question": "The average of 20 numbers is zero. Of them, at the most, how many may be greater than zero?"
+                    },
+                    "timestamp": "2026-01-16T17:21:33.354Z",
+                    "id": "xg7l38opy"
+                },
+                {
+                    "type": "aptitude_solve",
+                    "details": {
+                        "question": "A train running at the speed of 60 km/hr crosses a pole in 9 seconds. What is the length of the train?"
+                    },
+                    "timestamp": "2026-01-16T17:21:23.269Z",
+                    "id": "f2x69u80a"
+                }
+            ],
+            "timeSpent": 0
+        }
+    },
+    {
+        "email": "test@test.com",
+        "password": "password",
+        "uid": "guest-user-007"
+    }
+]
