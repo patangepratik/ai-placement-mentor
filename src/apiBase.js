@@ -2,21 +2,26 @@ const getBaseUrl = () => {
     const hostname = window.location.hostname;
     const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1';
 
-    // 1. If we are running on Vercel/Production, we should NEVER use localhost.
-    if (!isLocalhost) {
-        // Try environment variable first (should be set in Vercel settings)
-        const envUrl = process.env.REACT_APP_API_URL || process.env.REACT_APP_BACKEND_URL;
+    // Get environment variables baked in during build
+    const envUrl = process.env.REACT_APP_API_URL || process.env.REACT_APP_BACKEND_URL;
 
-        if (envUrl && !envUrl.includes('localhost')) {
-            return envUrl;
-        }
-
-        // FALLBACK: Use your EXACT live Render URL from the screenshot
-        return 'https://ai-placement-mentor-snau.onrender.com';
+    // If we have a valid environment variable, use it everywhere
+    if (envUrl && !envUrl.includes('localhost')) {
+        return envUrl;
     }
 
-    // 2. If we are running locally (localhost:3000), use the local backend
-    return 'http://localhost:5000';
+    // Default Live Backend URL (Your Render URL)
+    const liveUrl = 'https://ai-placement-mentor-snau.onrender.com';
+
+    // If we are on production, always return the live URL
+    if (!isLocalhost) {
+        return liveUrl;
+    }
+
+    // If we are on localhost, we'll try to use the live URL by default 
+    // so you don't have to run Python locally. 
+    // If you WANT to use your local Python backend, change this to 'http://localhost:5000'
+    return liveUrl;
 };
 
 export const API_BASE_URL = getBaseUrl();

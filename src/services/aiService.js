@@ -78,7 +78,7 @@ class AIService {
                 // Server responded with an error (e.g. 500 AI Engine failure)
                 throw new Error(`AI Engine Error: ${error.response.data.error || "Processing failed"}. Please try again later.`);
             }
-            throw new Error(`Cannot connect to AI Server. Please ensure the backend is running at ${BACKEND_URL}`);
+            throw new Error(`Cannot connect to AI Server at ${BACKEND_URL}. If using the live site, please wait 30-60 seconds for the free server to wake up and try again.`);
 
         }
     }
