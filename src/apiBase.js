@@ -11,10 +11,8 @@ const getBaseUrl = () => {
             return envUrl;
         }
 
-        // FALLBACK: Use the URL found in your Render screenshot
-        // Note: Your current Render service 'ai-placement-mentor' seems to be a Static Site.
-        // It MUST be a "Web Service" to run the Python code.
-        return 'https://ai-placement-mentor-dmsa.onrender.com';
+        // FALLBACK: Use your EXACT live Render URL from the screenshot
+        return 'https://ai-placement-mentor-snau.onrender.com';
     }
 
     // 2. If we are running locally (localhost:3000), use the local backend
