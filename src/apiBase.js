@@ -20,7 +20,7 @@ const getBaseUrl = () => {
     }
 
     // Default Live Backend URL (Your Render URL)
-    return 'https://ai-placement-mentor-snau.onrender.com';
+    return 'https://ai-placement-mentor-4.onrender.com';
 };
 
 export const API_BASE_URL = getBaseUrl();
