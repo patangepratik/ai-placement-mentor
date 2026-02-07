@@ -159,14 +159,22 @@ export function AuthProvider({ children }) {
       try {
         const user = JSON.parse(stored);
         setCurrentUser(user);
-        getUserProgress(user.uid); // This will update userProgress state inside
+        // We call this directly here, but we don't want to depend on the function identity
+        // to avoid infinite loops since getUserProgress depends on currentUser
       } catch (e) {
         console.error("Auth init error:", e);
         localStorage.removeItem("current-user");
       }
     }
     setLoading(false);
-  }, [getUserProgress]);
+  }, []); // Run ONCE on mount
+
+  // Sync progress when user changes
+  useEffect(() => {
+    if (currentUser?.uid) {
+      getUserProgress(currentUser.uid);
+    }
+  }, [currentUser, getUserProgress]);
 
 
 

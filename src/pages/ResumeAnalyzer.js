@@ -211,10 +211,10 @@ export default function ResumeAnalyzer() {
                                         <Divider sx={{ mb: 3 }} />
                                         <Typography variant="subtitle2" fontWeight={700} sx={{ mb: 2 }}>Keywords Alignment</Typography>
                                         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1.5 }}>
-                                            {result.missingKeywords.map((kw, i) => (
+                                            {(result.missingKeywords || []).map((kw, i) => (
                                                 <Chip key={i} label={kw} color="error" variant="filled" size="small" sx={{ fontWeight: 600 }} />
                                             ))}
-                                            {result.strengths.map((st, i) => (
+                                            {(result.strengths || []).map((st, i) => (
                                                 <Chip key={i} label={st} color="success" variant="outlined" size="small" sx={{ fontWeight: 600 }} />
                                             ))}
                                         </Box>
@@ -230,7 +230,7 @@ export default function ResumeAnalyzer() {
                                             <CheckIcon color="success" /> Technical Proficiency
                                         </Typography>
                                         <List disablePadding>
-                                            {result.skills.map((skill, i) => (
+                                            {(result.skills && Array.isArray(result.skills) ? result.skills : []).map((skill, i) => (
                                                 <Box key={i} sx={{ mb: 3 }}>
                                                     <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
                                                         <Typography variant="body1" fontWeight={700}>{skill.name}</Typography>
