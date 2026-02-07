@@ -31,5 +31,10 @@
         "email": "test@test.com",
         "password": "password",
         "uid": "guest-user-007"
+    },
+    {
+        "email": "pati@gmail.com",
+        "password": "pati",
+        "uid": "user-3-0c0953a6"
     }
 ]

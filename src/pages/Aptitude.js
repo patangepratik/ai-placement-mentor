@@ -12,16 +12,25 @@ import {
     Alert,
     LinearProgress
 } from '@mui/material';
-import aptitudeData from '../data/aptitude.json';
+import aptitudeDataOriginal from '../data/aptitude.json';
 import { useUserActivity } from '../hooks/useUserActivity';
+import { shuffleArray } from '../utils';
+import { useEffect } from 'react';
 
 export default function Aptitude() {
     const { trackActivity } = useUserActivity();
+    const [aptitudeData, setAptitudeData] = useState([]);
     const [currentIdx, setCurrentIdx] = useState(0);
     const [selectedOption, setSelectedOption] = useState('');
     const [showResult, setShowResult] = useState(false);
     const [score, setScore] = useState(0);
     const [isCorrect, setIsCorrect] = useState(null);
+
+    useEffect(() => {
+        setAptitudeData(shuffleArray(aptitudeDataOriginal));
+    }, []);
+
+    if (aptitudeData.length === 0) return null;
 
     const currentQuestion = aptitudeData[currentIdx];
 

@@ -173,12 +173,8 @@ export function AuthProvider({ children }) {
   function resetPassword(email) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const users = JSON.parse(localStorage.getItem("mock-users") || "[]");
-        if (users.find(u => u.email === email)) {
-          resolve("Password reset email sent (simulated)");
-        } else {
-          reject(new Error("Email not found"));
-        }
+        // In a real app, call backend to send reset email
+        resolve("Password reset email sent (simulated)");
       }, 500);
     });
   }

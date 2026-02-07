@@ -133,5 +133,122 @@
         "question": "What is the difference between TCP and UDP?",
         "answer": "TCP is connection-oriented, reliable, ensures data delivery in order, slower. UDP is connectionless, unreliable, faster, used for streaming and gaming.",
         "tips": "Mention use cases: TCP for web browsing, UDP for video calls."
+    },
+    {
+        "id": 19,
+        "type": "Technical",
+        "topic": "javascript",
+        "question": "What is the difference between let, const, and var?",
+        "answer": "var is functionally scoped and can be hoisted. let and const are block-scoped. const cannot be reassigned after declaration.",
+        "tips": "Always prefer const, then let. Avoid var in modern JS."
+    },
+    {
+        "id": 20,
+        "type": "Technical",
+        "topic": "javascript",
+        "question": "Explain Event Loop in JavaScript.",
+        "answer": "The event loop is a mechanism that allows JavaScript to perform non-blocking I/O operations by offloading tasks to the system kernel whenever possible. It constantly checks the call stack and the task queue.",
+        "tips": "Mention how it handles asynchronous callbacks and promises."
+    },
+    {
+        "id": 21,
+        "type": "Technical",
+        "topic": "react",
+        "question": "What is Virtual DOM?",
+        "answer": "Virtual DOM is a lightweight representation of the real DOM. React uses it to efficiently update the UI by comparing the virtual DOM with the previous version and only updating the changed parts in the real DOM.",
+        "tips": "Explain the reconciliation process and why it's faster."
+    },
+    {
+        "id": 22,
+        "type": "Technical",
+        "topic": "sql",
+        "question": "What is the difference between SQL and NoSQL?",
+        "answer": "SQL databases are relational and use structured schemas. NoSQL databases are non-relational and can be document-based, key-value pairs, or graph databases, offering more flexibility.",
+        "tips": "Give examples: MySQL/PostgreSQL for SQL, MongoDB/Cassandra for NoSQL."
+    },
+    {
+        "id": 23,
+        "type": "Technical",
+        "topic": "design patterns",
+        "question": "Explain SOLID principles.",
+        "answer": "SOLID is an acronym for: Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion. They are principles for creating maintainable and scalable software.",
+        "tips": "Be ready to explain at least one in detail with an example."
+    },
+    {
+        "id": 24,
+        "type": "Technical",
+        "topic": "cloud",
+        "question": "What is Docker?",
+        "answer": "Docker is a platform for developing, shipping, and running applications in containers. Containers are lightweight, portable, and ensure consistency across different environments.",
+        "tips": "Explain the difference between a container and a virtual machine."
+    },
+    {
+        "id": 25,
+        "type": "HR",
+        "question": "How do you stay updated with the latest trends in technology?",
+        "answer": "Mention specific resources like blogs (Medium, Dev.to), podcasts, online courses (Coursera, Udemy), attending meetups or conferences, and contributing to open-source projects.",
+        "tips": "Show your passion for continuous learning."
+    },
+    {
+        "id": 26,
+        "type": "Behavioral",
+        "question": "Tell me about a time you failed and what you learned from it.",
+        "answer": "Choose a genuine failure, explain the situation, take responsibility, and focus on the lessons learned and how you've applied them since.",
+        "tips": "Focus on the learning outcome, not just the failure."
+    },
+    {
+        "id": 27,
+        "type": "Technical",
+        "topic": "security",
+        "question": "What is OAuth 2.0?",
+        "answer": "OAuth 2.0 is an industry-standard protocol for authorization. it allows a website or application to access resources owned by the user from another service (e.g., Google, GitHub) without sharing the user's password.",
+        "tips": "Mention common use cases like 'Login with Google'."
+    },
+    {
+        "id": 28,
+        "type": "Technical",
+        "topic": "oops",
+        "question": "What is the difference between Abstraction and Encapsulation?",
+        "answer": "Abstraction focuses on hiding the implementation details and only showing the necessary features. Encapsulation focuses on bundling the data and methods together into a single unit (class) and restricting direct access to the data.",
+        "tips": "Use a car example: Abstraction is the steering wheel; Encapsulation is the engine under the hood."
+    },
+    {
+        "id": 29,
+        "type": "Technical",
+        "topic": "dsa",
+        "question": "What is a Hash Table?",
+        "answer": "A hash table is a data structure that implements an associative array abstract data type, a structure that can map keys to values. It uses a hash function to compute an index into an array of buckets or slots.",
+        "tips": "Mention time complexity for search, insert, and delete (Average O(1))."
+    },
+    {
+        "id": 30,
+        "type": "HR",
+        "question": "What are your hobbies outside of work?",
+        "answer": "Be honest and share activities that show your personality, such as sports, music, reading, or volunteering. This helps build rapport with the interviewer.",
+        "tips": "Show that you are a well-rounded individual."
+    },
+    {
+        "id": 31,
+        "type": "Technical",
+        "topic": "frontend",
+        "question": "What is the difference between Redux and Context API?",
+        "answer": "Redux is a robust state management library for complex applications with features like time-travel debugging. Context API is a built-in React feature for simple state sharing across the component tree.",
+        "tips": "Mention when to use which based on app complexity."
+    },
+    {
+        "id": 32,
+        "type": "Technical",
+        "topic": "operating systems",
+        "question": "What is a Deadlock in OS?",
+        "answer": "A deadlock is a situation where a set of processes are blocked because each process is holding a resource and waiting for another resource held by some other process in the set.",
+        "tips": "Mention the four necessary conditions for deadlock: Mutual Exclusion, Hold and Wait, No Preemption, and Circular Wait."
+    },
+    {
+        "id": 33,
+        "type": "Technical",
+        "topic": "algorithms",
+        "question": "Explain QuickSort algorithm.",
+        "answer": "QuickSort is a divide-and-conquer algorithm. It picks an element as 'pivot' and partitions the given array around the picked pivot. The average time complexity is O(n log n).",
+        "tips": "Be ready to explain the partitioning logic."
     }
 ]

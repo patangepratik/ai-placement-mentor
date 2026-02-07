@@ -17,6 +17,7 @@ export const useUserActivity = () => {
         };
 
         const updatedData = { ...currentProgress };
+        
 
         // Update counts based on activity
         if (type === 'aptitude_solve') updatedData.questionsSolved += 1;

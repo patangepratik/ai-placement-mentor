@@ -14,12 +14,19 @@ import {
     Search as SearchIcon,
     ChatBubbleOutline as ChatIcon
 } from '@mui/icons-material';
-import interviewData from '../data/interview.json';
+import interviewDataOriginal from '../data/interview.json';
 import { useUserActivity } from '../hooks/useUserActivity';
+import { shuffleArray } from '../utils';
+import { useEffect } from 'react';
 
 export default function Interview() {
     const { trackActivity } = useUserActivity();
+    const [interviewData, setInterviewData] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+
+    useEffect(() => {
+        setInterviewData(shuffleArray(interviewDataOriginal));
+    }, []);
 
     const filteredQuestions = interviewData.filter(q =>
         q.question.toLowerCase().includes(searchTerm.toLowerCase()) ||

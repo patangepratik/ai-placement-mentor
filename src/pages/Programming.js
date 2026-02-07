@@ -17,14 +17,23 @@ import {
     Code as CodeIcon,
     EmojiEvents as TrophyIcon
 } from '@mui/icons-material';
-import codingData from '../data/coding.json';
-
+import codingDataOriginal from '../data/coding.json';
 import { useUserActivity } from '../hooks/useUserActivity';
+import { shuffleArray } from '../utils';
+import { useEffect } from 'react';
 
 export default function Programming() {
     const { trackActivity } = useUserActivity();
+    const [codingData, setCodingData] = useState([]);
     const [currentIdx, setCurrentIdx] = useState(0);
     const [isSolved, setIsSolved] = useState(false);
+
+    useEffect(() => {
+        setCodingData(shuffleArray(codingDataOriginal));
+    }, []);
+
+    if (codingData.length === 0) return null;
+
     const problem = codingData[currentIdx];
 
     const handleNext = () => {

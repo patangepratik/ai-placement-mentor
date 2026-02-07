@@ -193,5 +193,135 @@
         ],
         "correctAnswer": "12.5%",
         "explanation": "If principal = P, then SI = P (doubles). SI = (P×R×8)/100 = P. Therefore R = 12.5%."
+    },
+    {
+        "id": 16,
+        "category": "Quantitative",
+        "question": "If 15 men can reap a field in 28 days, in how many days will 10 men reap it?",
+        "options": [
+            "40 days",
+            "42 days",
+            "35 days",
+            "45 days"
+        ],
+        "correctAnswer": "42 days",
+        "explanation": "M1D1 = M2D2. 15 * 28 = 10 * D2. D2 = (15 * 28) / 10 = 42 days."
+    },
+    {
+        "id": 17,
+        "category": "Logical Reasoning",
+        "question": "Pointing to a photograph, a man said, 'I have no brother or sister but that man's father is my father's son.' Whose photograph was it?",
+        "options": [
+            "His own",
+            "His son's",
+            "His father's",
+            "His nephew's"
+        ],
+        "correctAnswer": "His son's",
+        "explanation": "Since he has no brother or sister, 'my father's son' is himself. So, 'that man's father is me'. Thus, the photograph is of his son."
+    },
+    {
+        "id": 18,
+        "category": "Verbal Ability",
+        "question": "Choose the correct antonym for: TRANSIENT",
+        "options": [
+            "Fleeting",
+            "Permanent",
+            "Brief",
+            "Temporary"
+        ],
+        "correctAnswer": "Permanent",
+        "explanation": "Transient means lasting only for a short time. Permanent means lasting or intended to last or remain unchanged indefinitely."
+    },
+    {
+        "id": 19,
+        "category": "Quantitative",
+        "question": "What is the probability of getting a sum of 7 when two dice are thrown?",
+        "options": [
+            "1/6",
+            "1/12",
+            "1/4",
+            "5/36"
+        ],
+        "correctAnswer": "1/6",
+        "explanation": "Total outcomes = 36. Favorable outcomes (sum=7): (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) = 6. Probability = 6/36 = 1/6."
+    },
+    {
+        "id": 20,
+        "category": "Logical Reasoning",
+        "question": "If 'blue' is called 'green', 'green' is called 'white', 'white' is called 'yellow', and 'yellow' is called 'black', what is the color of clear sky?",
+        "options": [
+            "Blue",
+            "Green",
+            "White",
+            "Yellow"
+        ],
+        "correctAnswer": "Green",
+        "explanation": "The color of clear sky is blue, and in the given code, blue is called green."
+    },
+    {
+        "id": 21,
+        "category": "Quantitative",
+        "question": "A fruit seller had some apples. He sells 40% apples and still has 420 apples. Originally, he had:",
+        "options": [
+            "588 apples",
+            "600 apples",
+            "672 apples",
+            "700 apples"
+        ],
+        "correctAnswer": "700 apples",
+        "explanation": "He has 60% left. 60% of x = 420. x = (420 * 100) / 60 = 700 apples."
+    },
+    {
+        "id": 22,
+        "category": "Verbal Ability",
+        "question": "Choose the synonym for: ADVERSITY",
+        "options": [
+            "Failure",
+            "Helplessness",
+            "Misfortune",
+            "Crisis"
+        ],
+        "correctAnswer": "Misfortune",
+        "explanation": "Adversity means difficulties or misfortune."
+    },
+    {
+        "id": 23,
+        "category": "Logical Reasoning",
+        "question": "Which word does NOT belong with the others?",
+        "options": [
+            "Leopard",
+            "Cougar",
+            "Elephant",
+            "Lion"
+        ],
+        "correctAnswer": "Elephant",
+        "explanation": "Leopard, cougar, and lion are all members of the cat family; an elephant is not."
+    },
+    {
+        "id": 24,
+        "category": "Quantitative",
+        "question": "Find the simple interest on Rs. 1000 at 12% per annum for 3 years.",
+        "options": [
+            "Rs. 300",
+            "Rs. 360",
+            "Rs. 400",
+            "Rs. 420"
+        ],
+        "correctAnswer": "Rs. 360",
+        "explanation": "SI = (P * R * T) / 100 = (1000 * 12 * 3) / 100 = 360."
+    },
+    {
+        "id": 25,
+        "category": "Logical Reasoning",
+        "question": "Complete the series: 7, 10, 8, 11, 9, 12, (....)",
+        "options": [
+            "7",
+            "10",
+            "12",
+            "13"
+        ],
+        "correctAnswer": "10",
+        "explanation": "This is an alternating addition and subtraction series: +3, -2, +3, -2, +3, -2. So 12 - 2 = 10."
     }
 ]
