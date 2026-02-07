@@ -67,10 +67,13 @@ export default function ResumeAnalyzer() {
         setResult(null);
 
         try {
+            console.log("🚀 Starting AI Analysis for:", file.name);
             const data = await aiService.analyzeResume(file);
+            console.log("✅ Analysis Data received:", data);
             setProgress(100);
             setTimeout(() => {
                 setResult(data);
+                console.log("📊 Result state updated.");
                 setAnalyzing(false);
             }, 500);
         } catch (err) {

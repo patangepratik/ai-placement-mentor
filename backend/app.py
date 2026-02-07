@@ -16,6 +16,7 @@ ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://localhost:3001",
     "https://ai-placement-mentor.netlify.app",
+    "https://clinquant-brigadeiros-cdb2c6.netlify.app",
     "https://ai-placement-mentor.vercel.app"
 ]
 
@@ -260,6 +261,7 @@ def analyze_resume():
              else:
                  analysis_data = json.loads(result_text) if is_mock else { "error": "JSON Parse Error" }
 
+        print(f"DEBUG: Returning Analysis Data: {json.dumps(analysis_data)[:100]}...")
         return jsonify(analysis_data)
 
     except Exception as e:
