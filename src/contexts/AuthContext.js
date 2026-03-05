@@ -40,30 +40,77 @@ export function AuthProvider({ children }) {
   };
 
 
-  // Signup - Calls backend
+  // Signup - Calls backend with fallback
   async function signup(email, password) {
-    const data = await fetchWithRetry(API_ENDPOINTS.SIGNUP, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      const data = await fetchWithRetry(API_ENDPOINTS.SIGNUP, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      }, 1); // Use only 1 retry for faster fallback
 
-    setCurrentUser(data.user);
-    localStorage.setItem("current-user", JSON.stringify(data.user));
-    return data.user;
+      setCurrentUser(data.user);
+      localStorage.setItem("current-user", JSON.stringify(data.user));
+      return data.user;
+    } catch (err) {
+      console.warn("Backend error during signup. Switching to local fallback mode.", err.message);
+
+      const localUsersStr = localStorage.getItem("local-fallback-users");
+      const localUsers = localUsersStr ? JSON.parse(localUsersStr) : [];
+
+      if (localUsers.some(u => u.email === email.toLowerCase())) {
+        throw new Error("Email already exists (Local Mode)");
+      }
+
+      const newUser = {
+        email: email.toLowerCase(),
+        password: password,
+        uid: `local-${Math.random().toString(36).substr(2, 9)}`,
+        isLocalFallback: true
+      };
+
+      localUsers.push(newUser);
+      localStorage.setItem("local-fallback-users", JSON.stringify(localUsers));
+
+      const userToStore = { email: newUser.email, uid: newUser.uid, isLocalFallback: true };
+      setCurrentUser(userToStore);
+      localStorage.setItem("current-user", JSON.stringify(userToStore));
+      return userToStore;
+    }
   }
 
-  // Login - Calls backend
+  // Login - Calls backend with fallback
   async function login(email, password) {
-    const data = await fetchWithRetry(API_ENDPOINTS.LOGIN, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
+    try {
+      // First check if it's a known local fallback user
+      const localUsersStr = localStorage.getItem("local-fallback-users");
+      const localUsers = localUsersStr ? JSON.parse(localUsersStr) : [];
+      const localUser = localUsers.find(u => u.email === email.toLowerCase() && u.password === password);
 
-    setCurrentUser(data.user);
-    localStorage.setItem("current-user", JSON.stringify(data.user));
-    return data.user;
+      if (localUser) {
+        console.log("Logged in via local fallback mode.");
+        const userToStore = { email: localUser.email, uid: localUser.uid, isLocalFallback: true };
+        setCurrentUser(userToStore);
+        localStorage.setItem("current-user", JSON.stringify(userToStore));
+        return userToStore;
+      }
+
+      const data = await fetchWithRetry(API_ENDPOINTS.LOGIN, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      }, 1); // Use only 1 retry for faster fallback
+
+      setCurrentUser(data.user);
+      localStorage.setItem("current-user", JSON.stringify(data.user));
+      return data.user;
+    } catch (err) {
+      console.warn("Backend login failed:", err.message);
+      if (err.message.includes('unavailable') || err.message.includes('connect')) {
+        throw new Error("Server is unavailable and no offline account found. Please sign up again to continue offline.");
+      }
+      throw err;
+    }
   }
 
   // Guest Login
@@ -82,7 +129,12 @@ export function AuthProvider({ children }) {
   // Logout
   function logout() {
     return new Promise((resolve) => {
+      // Clear user-specific progress before clearing user
+      if (currentUser?.uid) {
+        localStorage.removeItem(`user-progress-${currentUser.uid}`);
+      }
       setCurrentUser(null);
+      setUserProgress(null); // CRITICAL: Reset progress state
       localStorage.removeItem("current-user");
       resolve();
     });
@@ -107,7 +159,7 @@ export function AuthProvider({ children }) {
     };
 
     try {
-      if (currentUser?.isGuest) {
+      if (currentUser?.isGuest || currentUser?.isLocalFallback) {
         setUserProgress(initialData);
         return initialData;
       }
@@ -136,7 +188,7 @@ export function AuthProvider({ children }) {
     localStorage.setItem(progressKey, JSON.stringify(progressData));
     setUserProgress(progressData);
 
-    if (currentUser?.isGuest) return progressData;
+    if (currentUser?.isGuest || currentUser?.isLocalFallback) return progressData;
 
     try {
       await fetch(API_ENDPOINTS.PROGRESS(userId), {

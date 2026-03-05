@@ -22,6 +22,7 @@ import {
 } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
 import aiService from '../services/aiService';
+import { useUserActivity } from '../hooks/useUserActivity';
 
 const SUGGESTIONS = [
     "Tell me about machine learning interviews",
@@ -31,6 +32,7 @@ const SUGGESTIONS = [
 ];
 
 export default function AIAssistant() {
+    const { trackActivity } = useUserActivity();
     const [messages, setMessages] = useState([
         { text: "Hello! I'm your AI Placement Mentor. How can I help you today?", sender: 'bot' }
     ]);
@@ -54,6 +56,9 @@ export default function AIAssistant() {
         setMessages(prev => [...prev, userMessage]);
         setInput('');
         setLoading(true);
+
+        // Track user interaction with AI
+        trackActivity('ai_chat', { message: msgToSend.substring(0, 50) + (msgToSend.length > 50 ? '...' : '') });
 
         try {
             const reply = await aiService.chat(msgToSend);

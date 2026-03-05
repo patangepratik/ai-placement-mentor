@@ -36,5 +36,81 @@
         "email": "pati@gmail.com",
         "password": "pati",
         "uid": "user-3-0c0953a6"
+    },
+    {
+        "email": "sunita@gmail.com",
+        "password": "sunita",
+        "uid": "user-4-ecdbd5b0",
+        "progress": {
+            "mockInterviews": 2.5,
+            "questionsSolved": 1,
+            "recentActivity": [
+                {
+                    "type": "resume_upload",
+                    "details": {
+                        "filename": "FAANG_Resume.pdf",
+                        "score": 91
+                    },
+                    "timestamp": "2026-02-12T05:54:37.633Z",
+                    "id": "bpoa0evs2"
+                },
+                {
+                    "type": "resume_upload",
+                    "details": {
+                        "filename": "Rohan AIASA Resume.pdf",
+                        "score": 83
+                    },
+                    "timestamp": "2026-02-12T05:53:52.521Z",
+                    "id": "mk1cmyw3y"
+                },
+                {
+                    "type": "interview_view",
+                    "details": {
+                        "question": "What is the difference between == and === in JavaScript?"
+                    },
+                    "timestamp": "2026-02-12T05:53:19.506Z",
+                    "id": "ce8qgizuk"
+                },
+                {
+                    "type": "aptitude_solve",
+                    "details": {
+                        "question": "A shopkeeper marks his goods 30% above cost price but allows a discount of 10%. What is his net profit percentage?"
+                    },
+                    "timestamp": "2026-02-12T05:52:49.639Z",
+                    "id": "tnvkbgn4i"
+                }
+            ],
+            "timeSpent": 0
+        }
+    },
+    {
+        "email": "kartik@gmail.com",
+        "password": "kartik",
+        "uid": "user-5-36e97920",
+        "progress": {
+            "mockInterviews": 2,
+            "questionsSolved": 0,
+            "recentActivity": [
+                {
+                    "type": "resume_upload",
+                    "details": {
+                        "filename": "Kartik_Swami_Resume.docx",
+                        "score": 65
+                    },
+                    "timestamp": "2026-02-12T13:47:17.216Z",
+                    "id": "51dd72bo3"
+                },
+                {
+                    "type": "resume_upload",
+                    "details": {
+                        "filename": "FAANG_Resume.pdf",
+                        "score": 91
+                    },
+                    "timestamp": "2026-02-12T13:45:23.093Z",
+                    "id": "wlqt0ozpv"
+                }
+            ],
+            "timeSpent": 0
+        }
     }
 ]

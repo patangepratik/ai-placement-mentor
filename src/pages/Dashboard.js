@@ -20,7 +20,9 @@ import {
     PlayArrow as PlayIcon,
     ArrowForward as ArrowIcon,
     QuestionAnswer as InterviewIcon,
-    Code as CodeIcon
+    Code as CodeIcon,
+    AutoAwesome as SparklesIcon,
+    CloudDone as CloudIcon
 } from '@mui/icons-material';
 import { useAuth } from '../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -129,16 +131,20 @@ export default function Dashboard() {
                                             <Avatar sx={{ bgcolor: 'primary.light', color: 'primary.main', mr: 2 }}>
                                                 {activity.type === 'aptitude_solve' ? <AssignmentIcon /> :
                                                     activity.type === 'programming_solve' ? <CodeIcon /> :
-                                                        <InterviewIcon />}
+                                                        activity.type === 'ai_chat' ? <SparklesIcon sx={{ color: 'secondary.main' }} /> :
+                                                            activity.type === 'resume_upload' ? <CloudIcon sx={{ color: 'success.main' }} /> :
+                                                                <InterviewIcon />}
                                             </Avatar>
                                             <Box sx={{ flexGrow: 1 }}>
                                                 <Typography variant="body1" fontWeight={700}>
                                                     {activity.type === 'aptitude_solve' ? 'Solved Aptitude Question' :
                                                         activity.type === 'programming_solve' ? 'Completed Code Challenge' :
-                                                            'Viewed Interview Guide'}
+                                                            activity.type === 'ai_chat' ? 'Consulted AI Mentor' :
+                                                                activity.type === 'resume_upload' ? 'Analyzed AI Resume' :
+                                                                    'Viewed Interview Guide'}
                                                 </Typography>
                                                 <Typography variant="caption" color="text.secondary">
-                                                    {new Date(activity.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} • {activity.details?.question || activity.details?.title || 'Technical Prep'}
+                                                    {new Date(activity.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} • {activity.details?.question || activity.details?.title || activity.details?.filename || activity.details?.message || 'Technical Prep'}
                                                 </Typography>
                                             </Box>
                                             <Chip label="Success" size="small" color="success" variant="outlined" sx={{ fontWeight: 700 }} />

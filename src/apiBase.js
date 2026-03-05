@@ -16,7 +16,7 @@ const getBaseUrl = () => {
 
     // If we are on any local address, prioritize the local Python backend
     if (isLocal) {
-        return 'http://localhost:5000';
+        return 'http://127.0.0.1:5001';
     }
 
     // Default Live Backend URL (Your Render URL)

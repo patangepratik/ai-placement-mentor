@@ -3,7 +3,7 @@ import json
 import urllib.error
 
 data = json.dumps({'email':'maske@gmail.com', 'password':'abc'}).encode('utf-8')
-req = urllib.request.Request('http://localhost:5000/api/login', data=data, headers={'Content-Type': 'application/json'}, method='POST')
+req = urllib.request.Request('http://localhost:5001/api/login', data=data, headers={'Content-Type': 'application/json'}, method='POST')
 
 try:
     print("Attempting to connect to backend...")

@@ -1,3 +1,7 @@
+import mimetypes
+# Workaround for Windows registry hang in mimetypes
+mimetypes.init()
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import google.generativeai as genai
@@ -20,13 +24,7 @@ ALLOWED_ORIGINS = [
     "https://ai-placement-mentor.vercel.app"
 ]
 
-CORS(app, resources={
-    r"/*": {
-        "origins": "*",
-        "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-        "allow_headers": ["Content-Type", "Authorization"]
-    }
-})
+CORS(app)
 
 @app.before_request
 def log_request_info():
@@ -158,7 +156,13 @@ def signup():
     new_user = {
         "email": email,
         "password": password, 
-        "uid": f"user-{len(users) + 1}-{os.urandom(4).hex()}"
+        "uid": f"user-{len(users) + 1}-{os.urandom(4).hex()}",
+        "progress": {
+            "questionsSolved": 0,
+            "mockInterviews": 0,
+            "timeSpent": 0,
+            "recentActivity": []
+        }
     }
     users.append(new_user)
     save_users(users)
@@ -284,13 +288,20 @@ def chat():
         
     return jsonify({"reply": reply})
 
+@app.errorhandler(Exception)
+def handle_exception(e):
+    print(f"❌ CRITICAL ERROR: {str(e)}")
+    import traceback
+    traceback.print_exc()
+    return jsonify({"error": "Internal Server Error", "details": str(e)}), 500
+
 @app.route('/health', methods=['GET'])
 def health():
-    return jsonify({"status": "ok"})
+    return jsonify({"status": "ok", "message": "Backend is healthy"})
 
 
 
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5001))
     print(f"AI Backend Running on port {port}")
-    app.run(debug=False, host='0.0.0.0', port=port)
+    app.run(debug=True, host='0.0.0.0', port=port)

@@ -26,8 +26,10 @@ import {
 } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
 import aiService from '../services/aiService';
+import { useUserActivity } from '../hooks/useUserActivity';
 
 export default function ResumeAnalyzer() {
+    const { trackActivity } = useUserActivity();
     const [file, setFile] = useState(null);
     const [analyzing, setAnalyzing] = useState(false);
     const [progress, setProgress] = useState(0);
@@ -71,6 +73,10 @@ export default function ResumeAnalyzer() {
             const data = await aiService.analyzeResume(file);
             console.log("✅ Analysis Data received:", data);
             setProgress(100);
+
+            // Track activity
+            trackActivity('resume_upload', { filename: file.name, score: data.score });
+
             setTimeout(() => {
                 setResult(data);
                 console.log("📊 Result state updated.");
