@@ -10,20 +10,12 @@ const getBaseUrl = () => {
         hostname.startsWith('10.') ||
         hostname.endsWith('.local');
 
-    // If Production Hostname, force the Render Backend
-    if (isProd) {
-        return 'https://ai-placement-mentor-4.onrender.com';
-    }
+    // Just hardcode it to the completely live fallback for everything.
+    // This allows local development (localhost) to connect to the live Render backend immediately via hot-reload.
+    // We override everything to ensure no more connection issues.
+    return 'https://ai-placement-mentor-4.onrender.com';
 
-    // Get environment variables baked in during build
-    const envUrl = process.env.REACT_APP_API_URL || process.env.REACT_APP_BACKEND_URL;
-
-    // Use environment variable if it specifically points to a remote server
-    if (envUrl && !envUrl.includes('localhost') && !isLocal) {
-        return envUrl;
-    }
-
-    // If we are on any local address, prioritize the local Python backend
+    // If we are on any local address and NO env variable is set, default to local python backend
     if (isLocal) {
         return 'http://127.0.0.1:5001';
     }
