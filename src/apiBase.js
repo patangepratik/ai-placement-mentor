@@ -1,10 +1,19 @@
 const getBaseUrl = () => {
     const hostname = window.location.hostname;
+
+    // Check if we're on the live Vercel/Netlify site
+    const isProd = hostname.includes('netlify.app') || hostname.includes('onrender.com') || hostname.includes('vercel.app');
+
     const isLocal = hostname === 'localhost' ||
         hostname === '127.0.0.1' ||
         hostname.startsWith('192.168.') ||
         hostname.startsWith('10.') ||
         hostname.endsWith('.local');
+
+    // If Production Hostname, force the Render Backend
+    if (isProd) {
+        return 'https://ai-placement-mentor-4.onrender.com';
+    }
 
     // Get environment variables baked in during build
     const envUrl = process.env.REACT_APP_API_URL || process.env.REACT_APP_BACKEND_URL;
@@ -19,7 +28,7 @@ const getBaseUrl = () => {
         return 'http://127.0.0.1:5001';
     }
 
-    // Default Live Backend URL (Your Render URL)
+    // Ultimate Fallback
     return 'https://ai-placement-mentor-4.onrender.com';
 };
 
